@@ -1,5 +1,8 @@
 package org.lee_sh1673;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Basic class of Business rule engine
  *
@@ -8,16 +11,24 @@ package org.lee_sh1673;
  */
 public class BusinessRuleEngine {
 
+    private final List<Action> actions;
+    private final Facts facts;
+
+    public BusinessRuleEngine(final Facts facts) {
+        this.actions = new ArrayList<>();
+        this.facts = facts;
+    }
+
     public void addAction(final Action action) {
-        throw new UnsupportedOperationException();
+        this.actions.add(action);
     }
 
     public int count() {
-        throw new UnsupportedOperationException();
+        return this.actions.size();
     }
 
     public void run() {
-        throw new UnsupportedOperationException();
+        this.actions.forEach(action -> action.execute(facts));
     }
 }
 
